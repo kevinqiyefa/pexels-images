@@ -1,0 +1,11 @@
+.header {
+  padding: 0.8em 4em;
+  background: #0bbefc;
+  text-align: left;
+  font-weight: 900;
+  font-size: 1.8em;
+}
+.header a {
+  color: #fff;
+  text-decoration: none;
+}

@@ -1,0 +1,6 @@
+.not_found_page {
+  background: rgba(0, 0, 0, 0.2);
+}
+.not_found_page img {
+  margin: 5em auto;
+}
