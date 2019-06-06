@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function DisplayImages({ images, nextPage, prevPage }) {
+function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
   const [viewPhoto, setViewPhoto] = useState('');
   const [isView, setIsView] = useState(false);
 
@@ -32,6 +32,22 @@ function DisplayImages({ images, nextPage, prevPage }) {
   return (
     <div>
       {showPhotos()}
+      <div className="show_img_navigation">
+        <button
+          type="button"
+          disabled={prevPage ? false : true}
+          onClick={() => nextPageAndPrevPage(prevPage)}
+        >
+          PrevPage
+        </button>
+        <button
+          type="button"
+          disabled={nextPage ? false : true}
+          onClick={() => nextPageAndPrevPage(nextPage)}
+        >
+          NextPage
+        </button>
+      </div>
       {isView ? (
         <div>
           <div onClick={closeViewMode}>X</div>

@@ -49,8 +49,8 @@ function Home() {
       });
   }
 
-  async function nextPageAndPrevPage(isNext) {
-    const url = isNext ? data.next_page : data.prev_page;
+  async function nextPageAndPrevPage(url) {
+    setIsLoading(true);
     await axios
       .get(url, {
         headers: { Authorization: apiKey }
@@ -58,7 +58,7 @@ function Home() {
       .then(response => {
         // handle success
         setData(response.data);
-        setIsLoading(true);
+        setIsLoading(false);
       })
       .catch(err => {
         // handle error
@@ -108,13 +108,14 @@ function Home() {
 
       {isLoading ? (
         <Loader />
-      ) : (
+      ) : Object.keys(data).length > 0 ? (
         <DisplayImages
           images={data.photos}
           nextPage={data.next_page}
           prevPage={data.prev_page}
+          nextPageAndPrevPage={url => nextPageAndPrevPage(url)}
         />
-      )}
+      ) : null}
     </div>
   );
 }
