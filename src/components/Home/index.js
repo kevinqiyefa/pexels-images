@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import DisplayImages from '../DisplayImages';
+import React, { useState } from 'react';
+import axios from 'axios';
 
+import DisplayImages from '../DisplayImages';
 import autoCorrect from './autoCorrect';
+import Loader from '../Loader';
+
+//API Key
+// Hard code the API here for demo purpose.
+const apiKey =
+  process.env.API_KEY ||
+  '563492ad6f91700001000001d3e99b4b6c03493ca59a246862da084b';
+
+const API_URL = 'https://api.pexels.com/v1/search?query=';
 
 function Home() {
-  const [images, setImages] = useState([]);
+  const [data, setData] = useState({});
   const [input, setInput] = useState('');
 
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = evt => {
     setInput(evt.target.value);
@@ -21,18 +32,58 @@ function Home() {
     }, 3000);
   };
 
+  async function fetchImages(input) {
+    await axios
+      .get(`${API_URL}${input}&per_page=20&page=1`, {
+        headers: { Authorization: apiKey }
+      })
+      .then(response => {
+        // handle success
+        setData(response.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        // handle error
+        setError(true);
+        setErrorMsg('Cannot access into this API!');
+      });
+  }
+
+  async function nextPageAndPrevPage(isNext) {
+    const url = isNext ? data.next_page : data.prev_page;
+    await axios
+      .get(url, {
+        headers: { Authorization: apiKey }
+      })
+      .then(response => {
+        // handle success
+        setData(response.data);
+        setIsLoading(true);
+      })
+      .catch(err => {
+        // handle error
+        setError(true);
+        setErrorMsg('Cannot access into this API!');
+        clearMsg();
+      });
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
-
+    setIsLoading(true);
+    // remove all non-alphbet and lower case the string
     let charStr = input.toLowerCase().replace(/[^a-z]/g, '');
 
-    if (!input) {
+    if (!charStr) {
       setError(true);
-      setErrorMsg('Please Enter Somthing!');
+      setErrorMsg('Please Enter Something!');
+      setIsLoading(false);
     } else {
       charStr = autoCorrect(charStr);
-      setInput(charStr);
+
+      fetchImages(charStr);
     }
+    setInput(charStr);
 
     clearMsg();
   };
@@ -55,7 +106,15 @@ function Home() {
         {error ? <p>{errorMsg}</p> : null}
       </form>
 
-      <DisplayImages images={images} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <DisplayImages
+          images={data.photos}
+          nextPage={data.next_page}
+          prevPage={data.prev_page}
+        />
+      )}
     </div>
   );
 }

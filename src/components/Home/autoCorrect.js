@@ -21,6 +21,7 @@ function autoCorrect(str) {
     return foundWordOneEditDistance;
   } else {
     checkMultiEditDistance(str, vowels, 0);
+
     if (validWordList.length) return validWordList[0];
   }
 
