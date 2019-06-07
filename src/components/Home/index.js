@@ -4,6 +4,7 @@ import axios from 'axios';
 import DisplayImages from '../DisplayImages';
 import autoCorrect from './autoCorrect';
 import Loader from '../Loader';
+import './style.css';
 
 //API Key
 // Hard code the API here for demo purpose.
@@ -89,7 +90,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="home-page">
       <h1>The best free stock photos shared by talented creators.</h1>
       <form onSubmit={handleSubmit}>
         <input
