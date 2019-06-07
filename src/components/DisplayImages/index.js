@@ -40,14 +40,14 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
           disabled={prevPage ? false : true}
           onClick={() => nextPageAndPrevPage(prevPage)}
         >
-          PrevPage
+          <i className="fas fa-chevron-circle-left" />
         </button>
         <button
           type="button"
           disabled={nextPage ? false : true}
           onClick={() => nextPageAndPrevPage(nextPage)}
         >
-          NextPage
+          <i className="fas fa-chevron-circle-right" />
         </button>
       </div>
       {isView ? (

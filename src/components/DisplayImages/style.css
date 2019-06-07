@@ -19,9 +19,32 @@
 }
 
 .show_img_navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10em;
+}
+.show_img_navigation button {
+  margin: 0 1em;
+  background-color: #0bbefc;
+  color: #fff;
+  font-size: 1.5em;
+  text-decoration: none;
+  border-radius: 0.5em;
+  border: 0.01em solid #0bbefc;
+  border-bottom: 0.15em solid #1984c3;
+  transition: 0.1s;
+  box-shadow: 1px 3px 5px #ccc;
+  cursor: pointer;
+  padding: 0.25em 1em;
 }
 
-@media only screen and (max-width: 700px) {
+.show_img_navigation > button:hover {
+  background-color: #1e9feb;
+  border-bottom-width: 0;
+  margin-top: 0.1em;
+}
+
+@media only screen and (max-width: 800px) {
   .display-images img {
     width: 47%;
   }

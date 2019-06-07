@@ -41,12 +41,13 @@
   border-bottom-right-radius: 5px;
   border: 2px solid gray;
   position: relative;
-  right: 2px;
+  right: 4px;
   box-shadow: none;
   min-width: 40px;
   padding: 11px 24px;
   cursor: pointer;
   font-size: 16px;
+  background: white;
 }
 
 @media only screen and (max-width: 700px) {
