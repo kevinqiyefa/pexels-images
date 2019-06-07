@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './style.css';
 
 function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
   const [viewPhoto, setViewPhoto] = useState('');
@@ -20,7 +21,7 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
           <img
             key={image.id}
             alt="photos"
-            src={image.src.medium}
+            src={image.src.tiny}
             onClick={() => viewImage(image.src.original)}
           />
         ));
@@ -31,7 +32,8 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
   };
   return (
     <div>
-      {showPhotos()}
+      <div className="display-images">{showPhotos()}</div>
+
       <div className="show_img_navigation">
         <button
           type="button"

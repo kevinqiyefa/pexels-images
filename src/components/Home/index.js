@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import DisplayImages from '../DisplayImages';
 import autoCorrect from './autoCorrect';
 import Loader from '../Loader';
 import './style.css';
+import dataImages from './data';
 
 //API Key
 // Hard code the API here for demo purpose.
@@ -33,9 +34,14 @@ function Home() {
     }, 3000);
   };
 
+  useEffect(() => {
+    setData(dataImages);
+  }, []);
+  console.log(data);
+
   async function fetchImages(input) {
     await axios
-      .get(`${API_URL}${input}&per_page=20&page=1`, {
+      .get(`${API_URL}${input}&per_page=15&page=1`, {
         headers: { Authorization: apiKey }
       })
       .then(response => {
@@ -77,7 +83,7 @@ function Home() {
 
     if (!charStr) {
       setError(true);
-      setErrorMsg('Please Enter Something!');
+      setErrorMsg('Please enter something else!');
       setIsLoading(false);
     } else {
       charStr = autoCorrect(charStr);
@@ -92,13 +98,14 @@ function Home() {
   return (
     <div className="home-page">
       <h1>The best free stock photos shared by talented creators.</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
           type="text"
           name="text"
           placeholder="Search for free photos"
           value={input}
           onChange={handleChange}
+          required
         />
 
         <button type="submit">
@@ -121,4 +128,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default React.memo(Home);

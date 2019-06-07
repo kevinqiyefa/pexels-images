@@ -4,15 +4,68 @@
 }
 
 .home-page > h1 {
-  font-weight: 700;
+  font-weight: 500;
   line-height: 48px;
   color: #808080;
   margin-bottom: 20px;
-  padding: 0 3em;
+  padding: 1em 3em;
 }
 
-@media only screen and (max-width: 600px) {
+.search-form {
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 2em;
+  box-sizing: border-box;
+}
+
+.search-form > input {
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 300;
+  outline: none;
+  border: 2px solid gray;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 12px 16px;
+  -webkit-appearance: none;
+}
+
+.search-form > button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid gray;
+  position: relative;
+  right: 2px;
+  box-shadow: none;
+  min-width: 40px;
+  padding: 11px 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 700px) {
   .home-page > h1 {
-    padding: 0 1em;
+    padding: 0 1.2em;
+    font-size: 2em;
+  }
+  .search-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .home-page > h1 {
+    padding: 0 0.8em;
+    font-size: 1.5em;
+  }
+
+  .search-form {
+    width: 100%;
   }
 }

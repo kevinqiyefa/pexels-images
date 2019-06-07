@@ -1,0 +1,38 @@
+.display-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 3em;
+}
+
+.display-images img {
+  cursor: pointer;
+  width: 31%;
+  height: 100%;
+  margin: 1em 0;
+  object-fit: cover;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.display-images img:hover {
+  opacity: 0.6;
+}
+
+.show_img_navigation {
+}
+
+@media only screen and (max-width: 700px) {
+  .display-images img {
+    width: 47%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .display-images {
+    margin: 2em;
+  }
+
+  .display-images img {
+    width: 100%;
+  }
+}
