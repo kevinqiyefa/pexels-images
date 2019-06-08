@@ -1,6 +1,7 @@
 .home-page {
   max-width: 1028px;
-  margin: 7em auto 2em auto;
+  margin: 5em auto;
+  overflow: hidden;
 }
 
 .home-page > h1 {
@@ -48,6 +49,11 @@
   cursor: pointer;
   font-size: 16px;
   background: white;
+  transition: all 1s;
+}
+
+.search-form > button:hover {
+  background: lightgrey;
 }
 
 @media only screen and (max-width: 700px) {

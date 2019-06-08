@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import DisplayImages from '../DisplayImages';
 import autoCorrect from './autoCorrect';
 import Loader from '../Loader';
 import './style.css';
-import dataImages from './data';
 
 //API Key
 // Hard code the API here for demo purpose.
@@ -33,11 +32,6 @@ function Home() {
       setErrorMsg('');
     }, 3000);
   };
-
-  useEffect(() => {
-    setData(dataImages);
-  }, []);
-  console.log(data);
 
   async function fetchImages(input) {
     await axios

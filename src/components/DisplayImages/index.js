@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Backdrop from '../BackDrop';
 import './style.css';
 
 function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
@@ -22,7 +23,7 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
             key={image.id}
             alt="photos"
             src={image.src.tiny}
-            onClick={() => viewImage(image.src.original)}
+            onClick={() => viewImage(image.src.large2x)}
           />
         ));
       } else {
@@ -31,7 +32,7 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
     }
   };
   return (
-    <div>
+    <div className="display-images-wrapper">
       <div className="display-images">{showPhotos()}</div>
 
       <div className="show_img_navigation">
@@ -51,9 +52,12 @@ function DisplayImages({ images, nextPage, prevPage, nextPageAndPrevPage }) {
         </button>
       </div>
       {isView ? (
-        <div>
-          <div onClick={closeViewMode}>X</div>
-          <img alt="original pic" src={viewPhoto} />
+        <div className="view_photo">
+          <Backdrop show={isView} clicked={closeViewMode} />
+          <div className="modal">
+            <span onClick={closeViewMode}>×</span>
+            <img alt="original pic" src={viewPhoto} />
+          </div>
         </div>
       ) : null}
     </div>
