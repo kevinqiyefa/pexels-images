@@ -1,7 +1,7 @@
 import wordList from '../../words.json';
 
 const words = new Set(wordList); //English word dictionary for lookup
-const validWordList = []; //for suggestion feature
+const validWordList = []; //for keyword suggestion feature
 
 function autoCorrect(str) {
   let foundWordOneEditDistance;
@@ -15,16 +15,18 @@ function autoCorrect(str) {
     return str;
   }
 
+  //check if user makes one char typo
   foundWordOneEditDistance = checkOneEditDistance(str, vowels);
 
   if (foundWordOneEditDistance) {
     return foundWordOneEditDistance;
   } else {
     checkMultiEditDistance(str, vowels, 0);
-
+    // return the first word in the validWordList
     if (validWordList.length) return validWordList[0];
   }
 
+  // return the original string if it cannot autocorrect.
   return str;
 }
 
@@ -45,6 +47,7 @@ const checkOneEditDistance = (str, vowels) => {
   }
 };
 
+// check all the vowels combination, and return a list of similar valid words
 const checkMultiEditDistance = (str, vowels, start) => {
   const strArr = str.split('');
 
@@ -59,7 +62,6 @@ const checkMultiEditDistance = (str, vowels, start) => {
       const tempStr = strArr.join('');
       if (words.has(tempStr)) {
         validWordList.push(tempStr);
-        return;
       }
 
       checkMultiEditDistance(tempStr, vowels, start + 1);
