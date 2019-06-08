@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pexels Images
 
-## Available Scripts
+## Features
+> 1. `Interact with Pexels API` 
+> 2. `Custom spelling checker`
 
-In the project directory, you can run:
+## Setup Instructions
 
-### `npm start`
+## Instructions:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 1. `Clone the Repo`
+> 
+> 2. `npm install`
+> 
+> 3. `npm start`
+> 
+> 4. `npm test` to run the unit test
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App Structure
 
-### `npm run build`
+### Directories
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The app is organized into a few main directories. This is relatively standard. Here's an explanation for each of them:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- `components` - all regular React components go in here in their own folders
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Component Folders
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+├── App/  # The root component
+├── Backdrop/   # The dark overlay using in SideDrawer and DisplayImages compnents
+├── DisplayImages/    # The component displays all the images
+├── Home/      # Home page 
+├── Toolbar/   # The component that group the logo and all the navigation items 
+├── __test__/   # Jest and Enzyme Tests
+├── SideDrawer/   # The navigation component for mobile view
+├── Logo/       # Used in Toolbar and SideDrawer components
+└── NotFoundPage/   # 404 not found component
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+One of the first things you will notice is that everything is basically in its own folder. Every component has a folder, for instance. Here's what goes into a component's folder:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `index.js` - the main component code here
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- `style.css` - CSS styles relating to the component
