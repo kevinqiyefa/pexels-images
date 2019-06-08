@@ -47,6 +47,7 @@ function Home() {
         // handle error
         setError(true);
         setErrorMsg('Cannot access into this API!');
+        setIsLoading(false);
       });
   }
 
@@ -63,6 +64,7 @@ function Home() {
       })
       .catch(err => {
         // handle error
+        setIsLoading(false);
         setError(true);
         setErrorMsg('Cannot access into this API!');
         clearMsg();
@@ -93,19 +95,22 @@ function Home() {
     <div className="home-page">
       <h1>The best free stock photos shared by talented creators.</h1>
       <form onSubmit={handleSubmit} className="search-form">
-        <input
-          type="text"
-          name="text"
-          placeholder="Search for free photos"
-          value={input}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <input
+            type="text"
+            name="text"
+            placeholder="Search for free photos"
+            value={input}
+            onChange={handleChange}
+            required
+            className="input-field"
+          />
 
-        <button type="submit">
-          <i className="fas fa-search" />
-        </button>
-        {error ? <p>{errorMsg}</p> : null}
+          <button type="submit">
+            <i className="fas fa-search" />
+          </button>
+        </div>
+        {error ? <p className="error_msg">* {errorMsg}</p> : null}
       </form>
 
       {isLoading ? (
