@@ -57,7 +57,7 @@
   transition: all 1s;
 }
 
-.search-form > button:hover {
+.search-form button:hover {
   background: lightgrey;
 }
 
