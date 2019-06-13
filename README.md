@@ -6,7 +6,6 @@
 > 1. `Interact with Pexels API` 
 > 2. `Custom spelling checker`
 
-## Setup Instructions
 
 ## Instructions:
 
