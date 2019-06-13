@@ -33,8 +33,8 @@ function Home() {
     }, 3000);
   };
 
-  async function fetchImages(input) {
-    await axios
+  function fetchImages(input) {
+    axios
       .get(`${API_URL}${input}&per_page=15&page=1`, {
         headers: { Authorization: apiKey }
       })
@@ -51,9 +51,9 @@ function Home() {
       });
   }
 
-  async function nextPageAndPrevPage(url) {
+  function nextPageAndPrevPage(url) {
     setIsLoading(true);
-    await axios
+    axios
       .get(url, {
         headers: { Authorization: apiKey }
       })
